@@ -1,0 +1,9 @@
+= form_tag 'composition', class: 'form-horizontal' do 
+  .row
+    .col.col-lg-10
+      = label_tag 'Share Something'
+      = text_field_tag :post
+  .row
+    .col.col-lg-10
+      .pull-right
+        = button_tag "Submit", class: 'btn btn-primary'

@@ -1,0 +1,16 @@
+.row
+  .col.col-lg-8
+    = render 'form'
+
+    %ul.media-list
+      - @posts.each do |post|
+        %li.media
+          = render 'stream_row', post: post
+
+  .col.col-lg-4
+    %h1 Just Bought
+    %ul
+    %li.list-unstyled= link_to "Profile"
+    %li.list-unstyled= link_to "Friend Requests (5)"
+    %li.list-unstyled= link_to "Settings"
+    %li.list-unstyled= link_to "Sign Out", destroy_user_session_path, method: :delete
