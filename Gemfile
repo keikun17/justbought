@@ -50,3 +50,7 @@ gem 'pry', group: [:development, :test]
 gem 'quiet_assets', group: [:development, :test]
 
 gem 'devise'
+
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+  :git => 'git://github.com/anjlab/bootstrap-rails.git',
+  :branch => '3.0.0'
