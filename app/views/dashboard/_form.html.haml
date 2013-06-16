@@ -2,7 +2,10 @@
   .row
     .col.col-lg-10
       = label_tag 'Share Something'
-      = text_field_tag :post
+      = text_area_tag 'post[comment]', '', placeholder: "Bought anything recently?"
+    #price.col.col-lg-10{style: 'display:none'}
+      = label_tag ''
+      = text_field_tag 'post[price]', '', placeholder: "How much do you think it's worth?"
   .row
     .col.col-lg-10
       .pull-right
