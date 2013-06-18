@@ -2,41 +2,40 @@ class TagParser
   include ActionView::Helpers
   # include ActionView::Context
 
-  HASHTAG_REGEX =  /\B#(\w+)/i
-  CASHTAG_REGEX = /\B\$(\w+)/i
 
-  attr_accessor :raw_text
+  attr_accessor :raw
 
   def initialize(options)
-    @raw_text = options[:raw_text]
+    @raw = options[:raw]
   end
 
   def parse
-    parse_hashtags!
-    parse_cashtags!
-    @raw_text
+    linkify_hashtags!
+    labelize_cashtags!
+    @raw
   end
 
-  def parse_cashtags!
-    cashtags = @raw_text.scan(TagParser::CASHTAG_REGEX)
+  def labelize_cashtags!
+    cashtags = TagExtractor.extract_cashtags(@raw)
 
     cashtags.each do |cashtag|
-      cashtag = "$#{cashtag[0]}"
-      @raw_text.gsub!(cashtag, link_to(cashtag, '#'))
+      cashtag = "$#{cashtag}"
+      html = content_tag(:span, cashtag, class: "label label-success")
+      @raw.gsub!(cashtag, html)
     end
 
-    @raw_text
+    @raw
   end
 
-  def parse_hashtags!
-    hashtags = @raw_text.scan(TagParser::HASHTAG_REGEX)
+  def linkify_hashtags!
+    hashtags = TagExtractor.extract_hashtags(@raw)
 
     hashtags.each do |hashtag|
-      hashtag = "##{hashtag[0]}"
-      @raw_text.gsub!(hashtag, link_to(hashtag, '#'))
+      hashtag = "##{hashtag}"
+      @raw.gsub!(hashtag, link_to(hashtag, '#'))
     end
 
-    @raw_text
+    @raw
   end
 
 end

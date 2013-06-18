@@ -7,7 +7,8 @@ class PostDecorator < Draper::Decorator
   end
 
   def parsed_comment
-    TagParser.new(raw_text: self.raw_comment).parse
+    html = TagParser.new(raw: self.raw_comment).parse
+    html.html_safe
   end
 
   def tagged_text
