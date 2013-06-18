@@ -1,12 +1,9 @@
-= form_tag 'composition', class: 'form-horizontal' do 
+= form_for @post, class: 'form-horizontal' do |f|
   .row
     .col.col-lg-10
-      = label_tag 'Share Something'
-      = text_area_tag 'post[comment]', '', placeholder: "Bought anything recently?"
-    #price.col.col-lg-10{style: 'display:none'}
-      = label_tag ''
-      = text_field_tag 'post[price]', '', placeholder: "How much do you think it's worth?"
+      = f.label :raw_comment, 'Share Something'
+      = f.text_field :raw_comment, placeholder: "Bought anything recently?"
   .row
     .col.col-lg-10
       .pull-right
-        = button_tag "Submit", class: 'btn btn-primary'
+        = submit_tag "Submit", class: 'btn btn-primary'

@@ -3,10 +3,10 @@
 .media-body
   .row
     .col-lg-12
-      %strong= link_to post.name, '#'
+      %strong= link_to post.user.email, '#'
+    .col.col-lg-12= parse_with_taggables(post.raw_comment)
   .row
-    .col.col-lg-12= post.thought_price
-  .row
-    .col.col-lg-12= post.comment
+    .col.col-lg-4.pull-right
+      = link_to "Like", '#'
 
 
