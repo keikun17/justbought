@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def create
-    @Post = current_user.posts.create(post_params)
+    @post = current_user.posts.create(post_params)
     redirect_to root_path
   end
 
