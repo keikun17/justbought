@@ -2,7 +2,7 @@
   .col.col-lg-8
     = render 'form'
 
-    %ul.media-list
+    %ul.feed.media-list
       - @posts.each do |post|
         %li.media
           = render 'stream_row', post: post
