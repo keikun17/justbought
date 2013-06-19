@@ -2,8 +2,8 @@
   .row
     .col.col-lg-12
       %h3= f.label :raw_comment, 'Share Something'
+  .row
+    .col.col-lg-9
       = f.text_field :raw_comment, placeholder: "Bought anything recently? How much do you think it's worth?"
-  .row.actions
-    .col.col-lg-12
-      .pull-right
-        = submit_tag "Submit", class: 'btn btn-primary'
+    .col.col-lg-3
+      = submit_tag "Submit", class: 'btn btn-primary'
