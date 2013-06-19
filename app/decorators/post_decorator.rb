@@ -11,10 +11,6 @@ class PostDecorator < Draper::Decorator
     html.html_safe
   end
 
-  def tagged_text
-    link_to '#fujifilmx20', '#'
-  end
-
   def media
     avatar = h.image_tag(image_path)
     h.link_to(avatar, '#', class: 'pull-left')
