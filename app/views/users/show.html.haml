@@ -1,11 +1,12 @@
 .row
+
   .col.col-lg-8
-    = render 'form'
+    %h1= @user.email
 
     %ul.feed.media-list
       - @posts.each do |post|
         %li.media
-          = render 'stream_row', post: post
+          = render 'dashboard/stream_row', post: post
 
   .col.col-lg-4
     %h1 Just Bought

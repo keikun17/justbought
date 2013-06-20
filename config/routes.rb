@@ -7,6 +7,7 @@ Justbought::Application.routes.draw do
   root 'dashboard#index'
 
   resources :posts
+  resources :users, only: [:show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
