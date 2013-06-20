@@ -10,5 +10,6 @@
       = link_to "comment", '#'
       |
       = link_to "like", '#'
-      |
-      = link_to "delete", post_path(post), method: :delete
+      - if post.user_id.eql?(current_user.id)
+        |
+        = link_to "delete", post_path(post), method: :delete
