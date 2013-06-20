@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all.decorate
+    @posts = current_user.posts.decorate
+
   end
 
 end
