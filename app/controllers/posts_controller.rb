@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
 
   def create
-    @post = current_user.posts.create(post_params)
-    redirect_to root_path
+    if @post = current_user.posts.create(post_params)
+      redirect_to root_path, flash: { error: @post.errors.full_messages.to_sentence }
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
