@@ -12,7 +12,7 @@ class PostDecorator < Draper::Decorator
   end
 
   def media
-    avatar = h.image_tag(image_path)
+    avatar = h.image_tag('', data: {src: image_path})
     h.link_to(avatar, '#', class: 'pull-left')
   end
 
