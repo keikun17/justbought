@@ -1,0 +1,11 @@
+- if flash
+  .row.flash-message-container
+    - if flash[:error]
+      .col.col-offset-1.col-lg-8.alert.alert-danger= flash[:error]
+
+    - if flash[:success]
+      .col.col-offset-1.col-lg-8.alert.alert-success= flash[:success]
+
+    - if flash[:notice]
+      .col.col-offset-1.col-lg-8.alert-alert-info= flash[:notice]
+
