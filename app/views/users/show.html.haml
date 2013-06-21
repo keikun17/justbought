@@ -1,15 +1,22 @@
 .row
 
   .col.col-lg-8
-    %h1= @user.email
+    %h1
+      = @user.email
+      - if current_user and !current_user.friends_with?(@user)
+        = link_to "Add Friend", follow_user_path(@user), class: 'btn btn-primary'
+      - elsif current_user and current_user.friends_with?(@user)
+        = link_to "Unfriend", unfollow_user_path(@user), class: 'btn btn-danger'
 
     %ul.feed.media-list
+      = render 'shared/flash_messages'
       - @posts.each do |post|
         %li.media
           = render 'dashboard/stream_row', post: post
 
   .col.col-lg-4
     %h1 Just Bought
+    Logged in as #{current_user.email}
     %ul
     %li.list-unstyled= link_to "Profile"
     %li.list-unstyled= link_to "Friend Requests (#{current_user.friends.count})"

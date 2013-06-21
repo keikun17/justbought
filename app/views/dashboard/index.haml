@@ -9,6 +9,7 @@
 
   .col.col-lg-4
     %h1 Just Bought
+    Logged in as #{current_user.email}
     %ul
     %li.list-unstyled= link_to "Profile"
     %li.list-unstyled= link_to "Friend Requests (#{current_user.friends.count})"
