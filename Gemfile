@@ -57,3 +57,4 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 
 gem 'draper'
 gem 'annotate'
+gem 'mysql2'
