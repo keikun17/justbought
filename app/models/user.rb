@@ -18,6 +18,15 @@ class User < ActiveRecord::Base
     self.friends.where(:id => user.id).present?
   end
 
+  def feeds
+    Post.find_by_sql("select posts.* from (
+                        ( #{self.posts.to_sql} )
+                        Union
+                        ( #{self.friends_posts.to_sql} )
+                      ) posts
+                     order by posts.created_at desc" )
+  end
+
   def follow(user)
     self.friends << user
   end

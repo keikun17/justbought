@@ -3,7 +3,11 @@ class DashboardController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = current_user.friends_posts.decorate
+
+    # @posts = current_user.feeds.decorate
+
+    @posts = current_user.feeds
+    @posts = PostDecorator.decorate_collection(@posts)
 
   end
 
