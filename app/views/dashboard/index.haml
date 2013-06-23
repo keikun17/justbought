@@ -6,7 +6,7 @@
       - @posts.each do |post|
         %li.media
           = render 'stream_row', post: post
-
+    = will_paginate(@posts)
   .col.col-lg-4
     %h1 Just Bought
     Logged in as #{current_user.email}
