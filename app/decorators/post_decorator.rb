@@ -2,7 +2,7 @@ class PostDecorator < ApplicationDecorator
   delegate_all
 
   def parsed_comment
-    html = TagParser.new(raw: self.raw_comment).parse
+    html = TagParser.new(raw: self.raw_comment, currency: self.currency).parse
     html.html_safe
   end
 

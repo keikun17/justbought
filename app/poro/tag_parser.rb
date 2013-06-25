@@ -3,10 +3,11 @@ class TagParser
   # include ActionView::Context
 
 
-  attr_accessor :raw
+  attr_accessor :raw, :currency
 
   def initialize(options)
     @raw = options[:raw]
+    @currency = options[:currency] || '$'
   end
 
   def parse
@@ -19,9 +20,10 @@ class TagParser
     cashtags = TagExtractor.extract_cashtags(@raw)
 
     cashtags.each do |cashtag|
-      cashtag = "$#{cashtag}"
+      raw_cashtag = "$#{cashtag}"
+      cashtag = "#{self.currency}#{cashtag}"
       html = content_tag(:span, cashtag, class: "label label-success")
-      @raw.gsub!(cashtag, html)
+      @raw.gsub!(raw_cashtag, html)
     end
 
     @raw
