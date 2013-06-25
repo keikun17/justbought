@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130620075201) do
+ActiveRecord::Schema.define(version: 20130625094159) do
 
   create_table "followings", force: true do |t|
     t.integer "user_id"
@@ -22,17 +22,18 @@ ActiveRecord::Schema.define(version: 20130620075201) do
   add_index "followings", ["user_id"], name: "index_followings_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id",     null: false
+    t.integer  "user_id",                   null: false
     t.text     "raw_comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency",    default: "$"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",  null: false
+    t.string   "encrypted_password",     default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20130620075201) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency",               default: "$"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
