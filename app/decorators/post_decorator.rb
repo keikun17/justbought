@@ -1,11 +1,6 @@
 class PostDecorator < ApplicationDecorator
   delegate_all
 
-  def thought_price
-    content = "thought that #{tagged_text} is worth #{labeled_price}"
-    content.html_safe
-  end
-
   def parsed_comment
     html = TagParser.new(raw: self.raw_comment).parse
     html.html_safe
