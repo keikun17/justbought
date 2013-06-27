@@ -14,11 +14,4 @@
         %li.media
           = render 'dashboard/post', post: post
 
-  .col.col-lg-4
-    %h1 Just Bought
-    Logged in as #{current_user.email}
-    %ul
-    %li.list-unstyled= link_to "Profile", user_path(current_user)
-    %li.list-unstyled= link_to "Friend Requests (#{current_user.friends.count})"
-    %li.list-unstyled= link_to "Settings", edit_user_registration_path
-    %li.list-unstyled= link_to "Sign Out", destroy_user_session_path, method: :delete
+  = render 'layouts/sidebar'
