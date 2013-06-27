@@ -5,7 +5,7 @@
     %ul.feed.media-list
       - @posts.each do |post|
         %li.media
-          = render 'stream_row', post: post
+          = render 'post', post: post
     = will_paginate(@posts)
   .col.col-lg-4
     %h1 Just Bought
