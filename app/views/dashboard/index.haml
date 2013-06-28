@@ -2,10 +2,6 @@
   .col.col-lg-8
     = render 'form'
 
-    %ul.feed.media-list
-      - @posts.each do |post|
-        %li.media
-          = render 'post', post: post
-    = will_paginate(@posts)
+    = render 'dashboard/posts', posts: @posts
 
   = render 'layouts/sidebar'

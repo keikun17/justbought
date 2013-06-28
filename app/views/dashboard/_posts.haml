@@ -1,0 +1,5 @@
+%ul.feed.media-list
+  - posts.each do |post|
+    %li.media
+      = render '/dashboard/post', post: post
+= will_paginate(posts)

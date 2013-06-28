@@ -8,10 +8,6 @@
       - elsif current_user and current_user.friends_with?(@user)
         = link_to "Unfriend", unfollow_user_path(@user), class: 'btn btn-danger'
 
-    %ul.feed.media-list
-      = render 'shared/flash_messages'
-      - @posts.each do |post|
-        %li.media
-          = render 'dashboard/post', post: post
+    = render 'dashboard/posts', posts: @posts
 
   = render 'layouts/sidebar'
