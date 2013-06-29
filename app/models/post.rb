@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_many :likers, through: :likes, source: :user
 
   validate :check_hashtags, :check_cashtags
 

@@ -15,6 +15,20 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to :back
   end
+
+  def like
+    @post = Post.find(params[:id])
+    current_user.like(@post)
+
+    redirect_to :back, flash: { success: "Liked" }
+  end
+
+  def unlike
+    @post = Post.find(params[:id])
+    current_user.unlike(@post)
+
+    redirect_to :back, flash: { success: "Unliked" }
+  end
   private
 
   def post_params

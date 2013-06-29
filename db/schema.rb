@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130625094159) do
+ActiveRecord::Schema.define(version: 20130629143054) do
 
   create_table "followings", force: true do |t|
     t.integer "user_id"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20130625094159) do
 
   add_index "followings", ["followed_id"], name: "index_followings_on_followed_id", using: :btree
   add_index "followings", ["user_id"], name: "index_followings_on_user_id", using: :btree
+
+  create_table "likes", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.integer  "user_id",                   null: false

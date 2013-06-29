@@ -9,7 +9,7 @@
     .col.col-lg-3
       = link_to "comment", '#'
       |
-      = link_to "like", '#'
+      = link_to "like", like_post_path(post)
       - if post.user_id.eql?(current_user.id)
         |
         = link_to "delete", post_path(post), method: :delete

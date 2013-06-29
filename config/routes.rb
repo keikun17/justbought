@@ -7,7 +7,13 @@ Justbought::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'dashboard#index'
 
-  resources :posts
+  resources :posts do
+    member do
+      get 'like'
+      get 'unlike'
+    end
+  end
+
   resources :users, only: [:show] do
     member do
       get 'follow'
