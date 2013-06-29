@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def create
     if @post = current_user.posts.create(post_params.merge(currency: current_user.currency))
       redirect_to root_path, flash: { error: @post.errors.full_messages.to_sentence }
