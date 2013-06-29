@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     self.friends.where(:id => user.id).present?
   end
 
+  def likes_post?(post)
+    self.liked_posts.where(id: post.id).present?
+  end
+
   def follow(user)
     self.friends << user
   end
@@ -34,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def unlike(post)
-    self.liked_posts.where(post_id: post.id).delete_all
+    self.liked_posts.where(id: post.id).delete_all
   end
 
 end
