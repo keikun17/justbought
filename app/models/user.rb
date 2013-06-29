@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def unlike(post)
-    self.liked_posts.where(id: post.id).delete_all
+    self.likes.where(post_id: post.id).delete_all
   end
 
 end
