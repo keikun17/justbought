@@ -8,6 +8,8 @@ Justbought::Application.routes.draw do
   root 'dashboard#index'
 
   resources :posts do
+    resources :comments, only: [ :create, :delete ]
+
     member do
       get 'like'
       get 'unlike'
