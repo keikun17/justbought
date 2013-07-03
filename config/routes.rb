@@ -23,6 +23,7 @@ Justbought::Application.routes.draw do
     end
   end
 
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -57,7 +58,7 @@ Justbought::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
