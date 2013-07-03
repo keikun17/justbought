@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
     redirect_to :back, flash: { success: "Unliked" }
   end
+
   private
 
   def post_params
