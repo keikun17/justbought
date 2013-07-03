@@ -4,7 +4,6 @@ class DashboardController < ApplicationController
   def index
     @post = Post.new
     @posts = current_user.friends_posts.paginate(page: params[:page], per_page: 5).decorate
-
   end
 
 end
