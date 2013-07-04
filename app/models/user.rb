@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
+  has_many :comments
+
   has_many :friends_posts, through: :friends, source: 'posts'
 
   has_many :followings

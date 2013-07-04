@@ -5,3 +5,4 @@
         %li
           = link_to comment.user.email, user_path(comment.user)
           = comment.body
+          = link_to "Delete", post_comment_path(post, comment), method: :delete

@@ -5,6 +5,12 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    @comment = current_user.comments.where(id: params[:id], post_id: params[:post_id])
+    @comment.delete_all
+    redirect_to :back
+  end
+
   private
 
   def comment_params
