@@ -19,5 +19,5 @@
       - if post.user_id.eql?(current_user.id)
         |
         = link_to "delete", post_path(post), method: :delete
-  = render 'comments', post: post
-  = render 'comment_form', post: post
+  = render 'dashboard/comments', post: post
+  = render 'dashboard/comment_form', post: post
