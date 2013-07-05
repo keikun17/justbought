@@ -46,6 +46,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'pry', group: [:development, :test]
+gem 'rspec-rails', group: :test
+gem 'factory_girl_rails', group: :test
 
 gem 'quiet_assets', group: [:development, :test]
 
