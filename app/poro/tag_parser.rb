@@ -17,7 +17,7 @@ class TagParser
   end
 
   def labelize_cashtags!
-    cashtags = TagExtractor.extract_cashtags(@raw)
+    cashtags = TagExtractor.new(@raw).extract_cashtags
 
     cashtags.each do |cashtag|
       raw_cashtag = "$#{cashtag}"
@@ -32,7 +32,7 @@ class TagParser
   # TODO: Write tests using Capybara.string
   # http://robots.thoughtbot.com/post/29549610681/using-the-draper-gem-round-one
   def linkify_hashtags!
-    hashtags = TagExtractor.extract_hashtags(@raw)
+    hashtags = TagExtractor.new(@raw).extract_hashtags
 
     hashtags.each do |hashtag|
       hashtag = "##{hashtag}"
