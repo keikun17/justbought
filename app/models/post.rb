@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   end
 
   def check_cashtags
-    cashtags = TagExtractor.new(self.raw_comment).extract_hashtags
+    cashtags = TagExtractor.new(self.raw_comment).extract_cashtags
     errors.add(:raw_comment, "Should have a $price tag") if cashtags.empty?
   end
 
