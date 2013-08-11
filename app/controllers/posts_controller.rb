@@ -3,10 +3,11 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    if @post = current_user.posts.create(post_params.merge(currency: current_user.currency))
-      redirect_to root_path, flash: { error: @post.errors.full_messages.to_sentence }
+    @post = current_user.posts.new(post_params.merge(currency: current_user.currency))
+    if @post.save
+      redirect_to root_path, flash: { success: "Yobong nomon" }
     else
-      redirect_to root_path
+      redirect_to root_path, flash: { error: @post.errors.full_messages.to_sentence }
     end
   end
 
