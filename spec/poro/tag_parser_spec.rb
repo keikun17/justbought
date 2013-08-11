@@ -13,7 +13,6 @@ describe TagParser do
       tag_parser.parse
     end
     it "should convert hashtags to links" do
-      binding.pry
       tag_parser.should_receive(:linkify_hashtags!)
     end
 
