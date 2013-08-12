@@ -1,7 +1,5 @@
 class TagParser
   include ActionView::Helpers
-  # include ActionView::Context
-
 
   attr_accessor :raw, :currency
 
