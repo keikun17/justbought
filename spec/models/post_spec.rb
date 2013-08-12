@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe Post do
 
+  describe '#check_hashtags' do
+  end
+
+  describe '#check_cashtags' do
+  end
+
+  describe "#parsed_comment" do
+  end
+
 end
 
 # == Schema Information
