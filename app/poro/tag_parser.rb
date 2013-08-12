@@ -31,8 +31,6 @@ class TagParser
     @raw
   end
 
-  # TODO: Write tests using Capybara.string
-  # http://robots.thoughtbot.com/post/29549610681/using-the-draper-gem-round-one
   def linkify_hashtags!
     hashtags = extract_hashtags
 
