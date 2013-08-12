@@ -34,14 +34,24 @@ class TagParser
   # TODO: Write tests using Capybara.string
   # http://robots.thoughtbot.com/post/29549610681/using-the-draper-gem-round-one
   def linkify_hashtags!
-    hashtags = TagExtractor.new(@raw).extract_hashtags
+    hashtags = extract_hashtags
 
     hashtags.each do |hashtag|
-      hashtag = "##{hashtag}"
-      @raw.gsub!(hashtag, link_to(hashtag, '#'))
+      replace_string = "##{hashtag}"
+      @raw.gsub!(replace_string, link_to(hashtag, '#'))
     end
 
     @raw
+  end
+
+  private
+
+  def extract_hashtags
+    TagExtractor.new(@raw).extract_hashtags
+  end
+
+  def extract_cashtags
+    TagExtractor.new(@raw).extract_cashtags
   end
 
 end
