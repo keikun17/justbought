@@ -8,12 +8,16 @@ class TagParser
     @currency = options[:currency] || '$'
   end
 
+  # Build the parsed markup.
+  # turns "Got a #monitor for $300" into :
+  # Output: "Got a <a href='#'>monitor for <span class="label label-success">$300</span>"
   def parse
     linkify_hashtags!
     labelize_cashtags!
     @raw
   end
 
+  # wrap cashtag around a `span.label.label-success`
   def labelize_cashtags!
     cashtags = extract_cashtags
 
@@ -29,6 +33,7 @@ class TagParser
     @raw
   end
 
+  # Turns hashtags into links
   def linkify_hashtags!
     hashtags = extract_hashtags
 
