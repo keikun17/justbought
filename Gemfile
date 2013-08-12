@@ -48,6 +48,7 @@ end
 gem 'pry', group: [:development, :test]
 gem 'rspec-rails', group: :test
 gem 'factory_girl_rails', group: :test
+gem 'capybara', group: :test
 
 gem 'quiet_assets', group: [:development, :test]
 
