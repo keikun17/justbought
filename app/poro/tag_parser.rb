@@ -10,7 +10,7 @@ class TagParser
 
   # Build the parsed markup.
   # turns "Got a #monitor for $300" into :
-  # Output: "Got a <a href='#'>monitor</a> for <span class="label label-success">$300</span>"
+  # Output: "Got a <a href='#'>#monitor</a> for <span class="label label-success">$300</span>"
   def parse
     linkify_hashtags!
     labelize_cashtags!
