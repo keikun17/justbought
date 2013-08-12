@@ -3,21 +3,10 @@ class Post < ActiveRecord::Base
   has_many :likers, through: :likes, source: :user
   has_many :comments
 
-  validate :check_hashtags, :check_cashtags
 
   default_scope order(:created_at => :desc)
 
-  private
-
-  def check_hashtags
-    hashtags = TagExtractor.new(self.raw_comment).extract_hashtags
-    errors.add(:raw_comment, "Should have #something hashtagged") if hashtags.empty?
-  end
-
-  def check_cashtags
-    cashtags = TagExtractor.new(self.raw_comment).extract_cashtags
-    errors.add(:raw_comment, "Should have a $price tag") if cashtags.empty?
-  end
+  validates_with TagValidator
 
 end
 
