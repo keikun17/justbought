@@ -3,7 +3,6 @@ class Post < ActiveRecord::Base
   has_many :likers, through: :likes, source: :user
   has_many :comments
 
-
   default_scope order(:created_at => :desc)
 
   validates_with TagValidator

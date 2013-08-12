@@ -6,6 +6,7 @@ class PostDecorator < ApplicationDecorator
     html.html_safe
   end
 
+  # Show the Avatar. Use 64x64 placeholder for now
   def media
     avatar = h.image_tag('', data: {src: image_path})
     h.link_to(avatar, '#', class: 'pull-left')
