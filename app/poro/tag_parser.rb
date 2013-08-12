@@ -17,13 +17,15 @@ class TagParser
   end
 
   def labelize_cashtags!
-    cashtags = TagExtractor.new(@raw).extract_cashtags
+    cashtags = extract_cashtags
 
     cashtags.each do |cashtag|
-      raw_cashtag = "$#{cashtag}"
+      replace_string = "$#{cashtag}"
+
       cashtag = "#{self.currency}#{cashtag}"
-      html = content_tag(:span, cashtag, class: "label label-success")
-      @raw.gsub!(raw_cashtag, html)
+      new_html = content_tag(:span, cashtag, class: "label label-success")
+
+      @raw.gsub!(replace_string, new_html)
     end
 
     @raw
