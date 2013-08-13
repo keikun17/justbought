@@ -2,7 +2,7 @@ class PostDecorator < ApplicationDecorator
   delegate_all
 
   def parsed_comment
-    html = TagParser.new(raw: self.raw_comment, currency: self.currency).parse
+    html = parser.parse
     html.html_safe
   end
 
@@ -13,6 +13,10 @@ class PostDecorator < ApplicationDecorator
   end
 
   private
+
+  def parser
+    TagParser.new(raw: self.raw_comment, currency: self.currency)
+  end
 
   def image_path
     'holder.js/64x64'
