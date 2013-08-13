@@ -2,8 +2,7 @@ class PostDecorator < ApplicationDecorator
   delegate_all
 
   def parsed_comment
-    html = parser.parse
-    html.html_safe
+    parser.parse.html_safe
   end
 
   # Show the Avatar. Use 64x64 placeholder for now
