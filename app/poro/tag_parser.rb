@@ -6,6 +6,8 @@ class TagParser
   def initialize(options)
     @raw = options[:raw]
     @currency = options[:currency] || '$'
+    @cashtags = TagExtractor.new(@raw).extract_cashtags
+    @hashtags = TagExtractor.new(@raw).extract_hashtags
   end
 
   # Build the parsed markup.
@@ -19,15 +21,11 @@ class TagParser
 
   # wrap cashtag around a `span.label.label-success`
   def labelize_cashtags!
-    cashtags = extract_cashtags
+    @cashtags.each do |cashtag|
+      new_cashtag = "#{self.currency}#{cashtag}"
+      new_html = content_tag(:span, new_cashtag, class: "label label-success")
 
-    cashtags.each do |cashtag|
-      replace_string = "$#{cashtag}"
-
-      cashtag = "#{self.currency}#{cashtag}"
-      new_html = content_tag(:span, cashtag, class: "label label-success")
-
-      @raw.gsub!(replace_string, new_html)
+      @raw.gsub!("$#{cashtag}", new_html)
     end
 
     @raw
@@ -35,24 +33,11 @@ class TagParser
 
   # Turns hashtags into links
   def linkify_hashtags!
-    hashtags = extract_hashtags
-
-    hashtags.each do |hashtag|
-      replace_string = "##{hashtag}"
-      @raw.gsub!(replace_string, link_to(hashtag, '#'))
+    @hashtags.each do |hashtag|
+      @raw.gsub!( "##{hashtag}", link_to("##{hashtag}", '#') )
     end
 
     @raw
-  end
-
-  private
-
-  def extract_hashtags
-    TagExtractor.new(@raw).extract_hashtags
-  end
-
-  def extract_cashtags
-    TagExtractor.new(@raw).extract_cashtags
   end
 
 end
