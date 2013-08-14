@@ -24,7 +24,6 @@ class TagParser
     @cashtags.each do |cashtag|
       new_cashtag = "#{self.currency}#{cashtag}"
       new_html = content_tag(:span, new_cashtag, class: "label label-success")
-
       @raw.gsub!("$#{cashtag}", new_html)
     end
 
